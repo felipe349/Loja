@@ -12,9 +12,15 @@
 	<table class="table table-striped table-bordered">
 		<th>Produto</th>
 		<th>Preço</th>
+		<th>Descricao</th>
 		<?php foreach($resultado as $res){
 			echo "<tr><td>".$res['nome']."<br/></td><td>".$res['preco']."<br/></td>";
-			echo "<td><a href='remove-produto.php?id=".$res['id']."'class='text-danger'>remover</a></td></tr>";
+			echo "<td>".substr($res['descricao'],0,40)."</td>";
+			echo "<td><form action='remove-produto.php' method='post'>
+					<input type='hidden' name='id' value='".$res['id']."'>
+					<button type='submit' class='btn btn-danger'>remover</button>
+					</form>
+					</td></tr>";
 		} ?>
 	</table>
 
